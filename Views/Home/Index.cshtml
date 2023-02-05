@@ -1,0 +1,71 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+    @model FuncionarioModel;
+}
+
+<form asp-controller="Home" asp-action="Index" method="post" style="display:inline-flex; margin-left: 28.5%; margin-top: 1.5%">
+        
+    <div class="row">
+        <label>Nome do Funcionário:</label> 
+       <input asp-for="Func_Nome" type="text" class="form-control" style="width: 400%"/>
+    </div>
+    <button class="btn btn-block btn-success" type="submit" style="margin-left: 10%">Pesquisar</button>
+
+</form>
+
+
+<h1 style="text-align: center; margin-top: 3%">Funcionarios</h1>
+
+
+<table class="table table-bordered" style="text-align: center; align-items: center; margin-top: 3%">
+
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Nome</th>
+            <th>Email</th>
+            <th>Cargo</th>
+            <th>Salário</th>
+            <th>Data Contratação</th>
+            <th>#</th>
+            <th>#</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @{
+            foreach(var item in (List<FuncionarioModel>)ViewBag.ListaFuncionarios)
+            {
+                <tr>
+                    <td>@item.Func_Id</td>
+                    <td>@item.Func_Nome</td>
+                    <td>@item.Func_Email</td>
+                    <td>@item.Func_Cargo</td>
+                    <td>@item.Func_Salario</td>
+                    <td>@item.Func_DataContratacao</td>
+                    <td><button type="button" class="btn btn-warning" onclick="Editar(@item.Func_Id)">Editar</button></td>
+                    <td><button type="button" class="btn btn-danger" onclick="Deletar(@item.Func_Id)">Deletar</button></td>
+                </tr>
+            }
+        }
+    </tbody>
+
+</table>
+
+<br />
+
+<button class="btn btn-block btn-primary" type="button" style="width: 100%" onclick="Cadastrar()">Cadastrar Funcionário</button>
+
+<script>
+    function Cadastrar() {
+        window.location.href = "../Home/CadastroFuncionario";
+    }
+
+    function Editar(id) {
+        window.location.href = `../Home/CadastroFuncionario/${id}`
+    }
+
+    function Deletar(id) {
+        window.location.href = `../Home/ConfirmarDelete/${id}`
+    }
+</script>

@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\buildMultiTargeting\Orbium-Desafio-Jr-RVW.props" />
+</Project>

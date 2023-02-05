@@ -1,0 +1,30 @@
+﻿@{
+    ViewData["Title"] = "ConfirmarDelete";
+}
+
+@{
+    <main style="text-align: center; align-items: center; align-content: center">
+
+        <h2>Deletar Funcionário</h2>
+        <h3>Deseja realmente Deletar o Funcionário Selecionado? </h3>
+
+        <br/>
+
+        <button type="button" class="btn btn-success" onclick="Sim()" style="width: 100%">Sim</button>
+        <button type="button" class="btn btn-danger" onclick="Nao()" style="width: 100%; margin-top: 2%">Não</button>
+    
+    </main>
+
+    
+
+    <script>
+        function Sim() {
+            window.location.href = `../Deletar/@ViewData["idDelete"]`;
+        }
+
+        function Nao() {
+            window.location.href = '../Index';
+        }
+    </script>
+
+}
